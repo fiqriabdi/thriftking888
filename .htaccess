@@ -1,0 +1,31 @@
+# 1. PAKSA APACHE UNTUK LANGSUNG MEMBACA FILE INDEX DI DALAM PUBLIC
+DirectoryIndex public/index.php index.php
+
+RewriteEngine On
+
+# 2. TENTUKAN BASE FOLDER (Kunci utama agar subfolder XAMPP tidak Index Of)
+RewriteBase /thriftking888/
+
+# 3. Blokir akses langsung ke folder internal di luar public/ demi keamanan
+RewriteRule ^(Config|Controllers|Models|Middleware|routes|Views|helpers|database)(/.*)?$ - [F,L,NC]
+RewriteRule ^(tree\.txt|README\.md|\.env\.example)$ - [F,L,NC]
+
+# Proteksi tambahan untuk file sensitif
+<FilesMatch "^\.env">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 4. Alihkan aset statis agar langsung mengarah ke dalam folder public/
+RewriteRule ^(assets|storage)/(.*)$ public/$1/$2 [L]
+
+# 5. Jika request mengarah ke file fisik yang benar-benar ada, stop proses dan sajikan
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 6. SEMUA URL LAINNYA dibelokkan ke public/index.php
+# KECUALI untuk folder assets dan storage agar tidak masuk ke router PHP jika file tidak ditemukan
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/thriftking888/(assets|storage)/ [NC]
+RewriteRule ^(.*)$ public/index.php [L,QSA]

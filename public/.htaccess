@@ -1,0 +1,7 @@
+RewriteEngine On
+
+# Jika file atau direktori fisik tidak ditemukan, lempar ke index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php [L,QSA]

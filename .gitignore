@@ -1,0 +1,27 @@
+# 1. File Konfigurasi Sensitif
+.env
+
+# 2. Logs dan Temporary Files
+storage/logs/*.log
+storage/logs/.gitignore
+
+# 3. Folder Unggahan Pelanggan (Bukti Bayar)
+# Kita abaikan semua isinya, tapi tetap sertakan folder dan file pengaman
+public/storage/bukti_bayar/*
+!public/storage/bukti_bayar/.htaccess
+!public/storage/bukti_bayar/index.php
+
+# 4. Gambar Produk dan Aset Sistem
+public/assets/img/*.png
+public/assets/img/*.jpg
+public/assets/img/products/*
+!public/assets/img/no-image.png
+!public/assets/img/placeholder.png
+public/assets/img/reviews/*
+
+# 5. Dependencies
+vendor/
+
+# 6. System Files
+.DS_Store
+Thumbs.db

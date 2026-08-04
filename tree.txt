@@ -1,0 +1,88 @@
+﻿.
+├─ .env.example
+├─ .gitignore
+├─ .htaccess
+├─ Config
+│  ├─ koneksi.php
+│  └─ konstanta.php
+├─ Controllers
+│  ├─ Admin
+│  │  ├─ pesanancontroller.php
+│  │  ├─ produkcontroller.php
+│  │  ├─ ulasancontroller.php
+│  │  └─ usercontroller.php
+│  ├─ Auth
+│  │  ├─ authcontroller.php
+│  │  ├─ logincontroller.php
+│  │  ├─ logoutcontroller.php
+│  │  └─ registercontroller.php
+│  └─ Customer
+│     ├─ checkoutcontroller.php
+│     ├─ keranjangcontroller.php
+│     └─ profilcontroller.php
+├─ Middleware
+│  ├─ Auth.php
+│  └─ session_check.php
+├─ Models
+│  ├─ basemodel.php
+│  ├─ produk.php
+│  ├─ transaksi.php
+│  ├─ ulasan.php
+│  └─ user.php
+├─ Router
+│  └─ Router.php
+├─ database
+│  └─ database.sql
+├─ helpers
+│  ├─ Format.php
+│  └─ Security.php
+├─ public
+│  ├─ index.php
+│  ├─ assets
+│  │  ├─ css
+│  │  │  └─ site.css
+│  │  ├─ img
+│  │  │  ├─ logo
+│  │  │  └─ products
+│  │  └─ js
+│  │     └─ site.js
+│  └─ storage
+│     ├─ logs
+│     │  └─ app.log
+│     └─ bukti_bayar
+└─ Views
+   ├─ account
+   │  └─ profil.php
+   ├─ admin
+   │  ├─ dashboard.php
+   │  ├─ laporan.php
+   │  ├─ pengguna.php
+   │  ├─ pengguna_create.php
+   │  ├─ pengguna_edit.php
+   │  ├─ pesanan.php
+   │  ├─ produk_create.php
+   │  ├─ produk_edit.php
+   │  ├─ produk_index.php
+   │  ├─ reset_requests.php
+   │  ├─ settings.php
+   │  └─ ulasan.php
+   ├─ auth
+   │  ├─ login.php
+   │  ├─ logout.php
+   │  └─ register.php
+   ├─ cart
+   │  ├─ checkout.php
+   │  ├─ index.php
+   │  └─ konfirmasi.php
+   ├─ customer
+   │  ├─ pesanan.php
+   │  ├─ ulasan.php
+   │  └─ ulasan_saya.php
+   ├─ layouts
+   │  ├─ footer.php
+   │  ├─ header.php
+   │  └─ navbar.php
+   └─ shop
+      ├─ beranda.php
+      ├─ detail.php
+      └─ katalog.php
