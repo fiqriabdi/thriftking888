@@ -17,7 +17,7 @@ $data = $controller->show($id);
 
 // Proteksi jika data produk tidak ditemukan di database
 if (!$data) {
-    header('Location: ' . (defined('BASE_URL') ? BASE_URL : '') . 'katalog');
+    header('Location: ' . (defined('BASE_URL') ? BASE_URL : '') . 'produk');
     exit();
 }
 

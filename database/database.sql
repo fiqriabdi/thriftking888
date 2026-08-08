@@ -108,7 +108,7 @@ CREATE TABLE orders (
     total_pembayaran BIGINT NOT NULL, -- total_harga_produk + total_ongkir
 
     -- Logistik
-    no_resi VARCHAR(100) NULL,
+    --no_resi VARCHAR(100) NULL,
     expired_at DATETIME NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -182,8 +182,10 @@ CREATE TABLE settings (
 
 -- Seeders Data Awal
 INSERT INTO settings (id, nama_toko, email, no_hp) VALUES (1, 'ThriftKing888 Enterprise', 'admin@thriftking.com', '08123456789');
--- Catatan: Password di bawah ini adalah hash dari 'admin123' dan 'bli123' menggunakan BCRYPT
-INSERT INTO users (nama, email, password, role) VALUES ('Administrator', 'admin@thrift.com', '$2y$12$ovIer6P68/2YJovVpE6Esu2mJt0H9GzE7p2.6jG5f/6vXvB9iZ5lq', 'admin'); -- pass: admin123
+-- Catatan: Password di bawah ini adalah hash dari 'admin!' dan 'pelanggan123' menggunakan BCRYPT
+INSERT INTO users (nama, email, password, role) 
+VALUES ('Administrator', 'admin@thrift.com', '$2y$12$CKpJmNMSad6Rno/m0OX2bOH8d4dcQmq53Pwzw8mz3X/dKxgvPlk/W', 'admin');
+ -- pass: admin!
 INSERT INTO users (nama, email, password, role) VALUES ('Bliksemqri', 'bliksemqri@gmail.com', '$2y$12$7kF.o3hJg.o3hJg.o3hJg.o3hJg.o3hJg.o3hJg.o3hJg.o3hJg', 'pelanggan'); -- pass: pelanggan123
 
 -- Tabel untuk menyimpan token reset password

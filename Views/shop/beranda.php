@@ -75,8 +75,12 @@ require_once APP_ROOT . '/Views/layouts/header.php';
         background-color: #000000;
         background-size: 50%;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         filter: invert(1); /* Membuat panah Bootstrap (putih) menjadi hitam */
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
@@ -196,7 +200,7 @@ require_once APP_ROOT . '/Views/layouts/header.php';
                         <div class="col-lg-7">
                             <h1 class="display-2 fw-bold mb-3 hero-title text-capitalize">Timeless <br> Style</h1>
                             <p class="lead mb-4 sentence case" style="letter-spacing: 3px; font-size: 1rem;">Koleksi pakaian bekas dengan kualitas premium dan terjamin.</p>
-                            <a href="<?= $base_url ?>katalog" class="btn btn-light btn-lg rounded-0 px-5 fw-bold shadow-sm" style="font-size: 0.8rem; letter-spacing: 2px;">Lihat Katalog</a>
+                            <a href="<?= $base_url ?>produk" class="btn btn-light btn-lg rounded-0 px-5 fw-bold shadow-sm" style="font-size: 0.8rem; letter-spacing: 2px;">Lihat Produk</a>
                         </div>
                     </div>
                 </div>
@@ -218,7 +222,7 @@ require_once APP_ROOT . '/Views/layouts/header.php';
                 <div class="position-relative overflow-hidden text-white d-flex align-items-center justify-content-center" style="height: 280px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('<?= $base_url ?>assets/img/thrifting-cat.jpg') no-repeat center center/cover; background-color: #222;">
                     <div class="text-center">
                         <h3 class="fw-bold text-capitalize m-0 text-white" style="font-family: 'Tenor Sans', sans-serif; letter-spacing: 3px;">THRIFTING</h3>
-                        <!--<a href="<?= $base_url ?>katalog" class="btn btn-sm btn-light rounded-0 px-4 py-2 text-capitalize fw-bold mt-3" style="font-size: 0.65rem; letter-spacing: 1px;">Lihat Semua Koleksi</a>-->
+                        <!--<a href="<?= $base_url ?>produk" class="btn btn-sm btn-light rounded-0 px-4 py-2 text-capitalize fw-bold mt-3" style="font-size: 0.65rem; letter-spacing: 1px;">Lihat Semua Koleksi</a>-->
                     </div>
                 </div>
             </div>
@@ -233,7 +237,7 @@ require_once APP_ROOT . '/Views/layouts/header.php';
                 <h2 class="section-title fw-bold text-capitalize mb-1" style="font-size: 1.25rem;">Hot Sales</h2>
                 <p class="text-muted small text-capitalize mb-0" style="letter-spacing: 2px; font-size: 0.7rem;">Produk terbaru yang baru saja mendarat</p>
             </div>
-            <a href="<?= $base_url ?>katalog" class="text-decoration-none fw-bold text-dark small text-capitalize" style="letter-spacing: 1.5px; font-size: 0.75rem;">
+            <a href="<?= $base_url ?>produk" class="text-decoration-none fw-bold text-dark small text-capitalize" style="letter-spacing: 1.5px; font-size: 0.75rem;">
                 Lihat Semua <i class="bi bi-chevron-right ms-1"></i>
             </a>
         </div>
@@ -246,7 +250,7 @@ require_once APP_ROOT . '/Views/layouts/header.php';
             if (!empty($data)) :
                 foreach ($data as $p) :
                     $produk_nama = htmlspecialchars($p['nama_produk'], ENT_QUOTES, 'UTF-8');
-                    $produk_kategori = htmlspecialchars($p['nama_kategori'] ?? 'Katalog', ENT_QUOTES, 'UTF-8');
+                    $produk_kategori = htmlspecialchars($p['nama_kategori'] ?? 'Produk', ENT_QUOTES, 'UTF-8');
                     $produk_gambar_raw = $p['gambar_utama'] ?? '';
                     $produk_gambar = htmlspecialchars($produk_gambar_raw, ENT_QUOTES, 'UTF-8');
                     $produk_id = intval($p['id']);
@@ -259,13 +263,13 @@ require_once APP_ROOT . '/Views/layouts/header.php';
                         <?php elseif ($p['stok'] < 3) : ?>
                             <div class="position-absolute top-0 end-0 bg-warning text-dark small fw-bold px-2 py-1 m-2" style="font-size: 9px; letter-spacing: 1px; z-index: 3;">LIMITED</div>
                         <?php endif; ?>
-                        <a href="<?= $base_url ?>produk/<?= $produk_id ?>">
+                        <a href="<?= $base_url ?>detail/<?= $produk_id ?>">
                             <img src="<?= !empty($produk_gambar_raw) ? $base_url . 'assets/img/products/' . $produk_gambar : $base_url . 'assets/img/no-image.png' ?>" 
                                  alt="<?= $produk_nama ?>"
                                  class="<?= $p['stok'] <= 0 ? 'out-of-stock-img' : '' ?>"
                                  onerror="this.onerror=null;this.src='<?= $base_url ?>assets/img/no-image.png';">
                         </a> 
-                        <a href="<?= $base_url ?>produk/<?= $produk_id ?>" class="btn-overlay text-capitalize">View Details</a>
+                        <a href="<?= $base_url ?>detail/<?= $produk_id ?>" class="btn-overlay text-capitalize">Lihat Detail</a>
                     </div>
                     <div class="card-body text-center px-0 pb-0">
                         <p class="text-muted text-capitalize mb-1" style="font-size: 10px; letter-spacing: 1px;"><?= $produk_kategori ?></p>
@@ -286,7 +290,7 @@ require_once APP_ROOT . '/Views/layouts/header.php';
         </div>
 
         <div class="text-center mt-5 pt-4">
-            <a href="<?= $base_url ?>katalog" class="btn btn-outline-dark rounded-0 px-5 py-3 fw-bold" style="font-size: 0.7rem; letter-spacing: 2px;">Lihat Semua Koleksi</a>
+            <a href="<?= $base_url ?>produk" class="btn btn-outline-dark rounded-0 px-5 py-3 fw-bold" style="font-size: 0.7rem; letter-spacing: 2px;">Lihat Semua Koleksi</a>
         </div>
     </div>
 </section>
@@ -298,13 +302,16 @@ require_once APP_ROOT . '/Views/layouts/header.php';
                 <h2 class="section-title fw-bold text-capitalize mb-1" style="font-size: 1.25rem;">Rekomendasi Untukmu</h2>
                 <p class="text-muted small text-capitalize mb-0" style="letter-spacing: 2px; font-size: 0.7rem;">Pilihan terbaik dari koleksi kami</p>
             </div>
-            <a href="<?= $base_url ?>katalog" class="text-decoration-none fw-bold text-dark small text-capitalize" style="letter-spacing: 1.5px; font-size: 0.75rem;">
+            <a href="<?= $base_url ?>produk" class="text-decoration-none fw-bold text-dark small text-capitalize" style="letter-spacing: 1.5px; font-size: 0.75rem;">
                 Lihat Semua <i class="bi bi-chevron-right ms-1"></i>
             </a>
         </div>
 
+        
         <div class="row flex-nowrap overflow-auto pb-3" style="-webkit-overflow-scrolling: touch;">
+            
             <?php
+            // Kontainer Geser Horizontal Scroll
             // Mengambil 8 produk lainnya untuk rekomendasi, dimulai dari offset 8
             // PERBAIKAN: Hanya tampilkan produk 'active'
             $recommended_products = $controller->index(null, null, 8, 8, 'latest', true); 
@@ -312,7 +319,7 @@ require_once APP_ROOT . '/Views/layouts/header.php';
             if (!empty($recommended_products)) :
                 foreach ($recommended_products as $p) :
                     $produk_nama = htmlspecialchars($p['nama_produk'], ENT_QUOTES, 'UTF-8');
-                    $produk_kategori = htmlspecialchars($p['nama_kategori'] ?? 'Katalog', ENT_QUOTES, 'UTF-8');
+                    $produk_kategori = htmlspecialchars($p['nama_kategori'] ?? 'Produk', ENT_QUOTES, 'UTF-8');
                     $produk_gambar_raw = $p['gambar_utama'] ?? '';
                     $produk_gambar = htmlspecialchars($produk_gambar_raw, ENT_QUOTES, 'UTF-8');
                     $produk_id = intval($p['id']);
@@ -325,13 +332,13 @@ require_once APP_ROOT . '/Views/layouts/header.php';
                         <?php elseif ($p['stok'] < 3) : ?>
                             <div class="position-absolute top-0 end-0 bg-warning text-dark small fw-bold px-2 py-1 m-2" style="font-size: 9px; letter-spacing: 1px; z-index: 3;">LIMITED</div>
                         <?php endif; ?>
-                        <a href="<?= $base_url ?>produk/<?= $produk_id ?>">
+                        <a href="<?= $base_url ?>detail/<?= $produk_id ?>">
                             <img src="<?= !empty($produk_gambar_raw) ? $base_url . 'assets/img/products/' . $produk_gambar : $base_url . 'assets/img/no-image.png' ?>" 
                                  alt="<?= $produk_nama ?>"
                                  class="<?= $p['stok'] <= 0 ? 'out-of-stock-img' : '' ?>"
                                  onerror="this.onerror=null;this.src='<?= $base_url ?>assets/img/no-image.png';">
                         </a> 
-                        <a href="<?= $base_url ?>produk/<?= $produk_id ?>" class="btn-overlay text-capitalize">View Details</a>
+                        <a href="<?= $base_url ?>detail/<?= $produk_id ?>" class="btn-overlay text-capitalize">View Details</a>
                     </div>
                     <div class="card-body text-center px-0 pb-0">
                         <p class="text-muted text-capitalize mb-1" style="font-size: 10px; letter-spacing: 1px;"><?= $produk_kategori ?></p>

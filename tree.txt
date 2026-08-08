@@ -1,88 +1,104 @@
 ﻿.
-├─ .env.example
-├─ .gitignore
-├─ .htaccess
-├─ Config
-│  ├─ koneksi.php
-│  └─ konstanta.php
-├─ Controllers
-│  ├─ Admin
-│  │  ├─ pesanancontroller.php
-│  │  ├─ produkcontroller.php
-│  │  ├─ ulasancontroller.php
-│  │  └─ usercontroller.php
-│  ├─ Auth
-│  │  ├─ authcontroller.php
-│  │  ├─ logincontroller.php
-│  │  ├─ logoutcontroller.php
-│  │  └─ registercontroller.php
-│  └─ Customer
-│     ├─ checkoutcontroller.php
-│     ├─ keranjangcontroller.php
-│     └─ profilcontroller.php
-├─ Middleware
-│  ├─ Auth.php
-│  └─ session_check.php
-├─ Models
-│  ├─ basemodel.php
-│  ├─ produk.php
-│  ├─ transaksi.php
-│  ├─ ulasan.php
-│  └─ user.php
-├─ Router
-│  └─ Router.php
-├─ database
-│  └─ database.sql
-├─ helpers
-│  ├─ Format.php
-│  └─ Security.php
-├─ public
-│  ├─ index.php
-│  ├─ assets
-│  │  ├─ css
-│  │  │  └─ site.css
-│  │  ├─ img
-│  │  │  ├─ logo
-│  │  │  └─ products
-│  │  └─ js
-│  │     └─ site.js
-│  └─ storage
-│     ├─ logs
-│     │  └─ app.log
-│     └─ bukti_bayar
-└─ Views
-   ├─ account
-   │  └─ profil.php
-   ├─ admin
-   │  ├─ dashboard.php
-   │  ├─ laporan.php
-   │  ├─ pengguna.php
-   │  ├─ pengguna_create.php
-   │  ├─ pengguna_edit.php
-   │  ├─ pesanan.php
-   │  ├─ produk_create.php
-   │  ├─ produk_edit.php
-   │  ├─ produk_index.php
-   │  ├─ reset_requests.php
-   │  ├─ settings.php
-   │  └─ ulasan.php
-   ├─ auth
-   │  ├─ login.php
-   │  ├─ logout.php
-   │  └─ register.php
-   ├─ cart
-   │  ├─ checkout.php
-   │  ├─ index.php
-   │  └─ konfirmasi.php
-   ├─ customer
-   │  ├─ pesanan.php
-   │  ├─ ulasan.php
-   │  └─ ulasan_saya.php
-   ├─ layouts
-   │  ├─ footer.php
-   │  ├─ header.php
-   │  └─ navbar.php
-   └─ shop
-      ├─ beranda.php
-      ├─ detail.php
-      └─ katalog.php
+├── .env.example
+├── .gitignore
+├── .htaccess
+├── Config
+│   ├── koneksi.php
+│   └── konstanta.php
+├── Controllers
+│   ├── Admin
+│   │   ├── KategoriController.php
+│   │   ├── SettingsController.php
+│   │   └── UlasanController.php
+│   ├── Auth
+│   │   └── AuthController.php
+│   └── Customer
+│       └── PembayaranController.php
+├── Middleware
+│   └── Auth.php
+├── Models
+│   ├── BaseModel.php
+│   ├── Notification.php
+│   ├── Produk.php
+│   ├── SettingsModel.php
+│   ├── Transaksi.php
+│   ├── Ulasan.php
+│   └── User.php
+├── Router
+│   └── Router.php
+├── database
+│   └── database.sql
+├── helpers
+│   ├── Format.php
+│   ├── Loggable.php
+│   └── Security.php
+├── public
+│   ├── .htaccess
+│   ├── assets
+│   │   ├── css
+│   │   │   └── site.css
+│   │   ├── img
+│   │   │   ├── logo/
+│   │   │   ├── products/
+│   │   │   └── reviews/
+│   │   └── js
+│   │       └── site.js
+│   ├── index.php
+│   └── storage
+│       ├── bukti_bayar/
+│       └── logs
+│           └── app.log
+├── tree.txt
+└── Views
+    ├── admin
+    │   ├── activity_log.php
+    │   ├── bank_rekening.php
+    │   ├── dashboard.php
+    │   ├── kategori.php
+    │   ├── konfirmasi_pembayaran.php
+    │   ├── laporan.php
+    │   ├── ongkir.php
+    │   ├── pengguna.php
+    │   ├── pengguna_create.php
+    │   ├── pengguna_edit.php
+    │   ├── pesanan.php
+    │   ├── pesanan_cetak.php
+    │   ├── pesanan_dibatalkan.php
+    │   ├── produk_cleanup.php
+    │   ├── produk_create.php
+    │   ├── produk_edit.php
+    │   ├── produk_index.php
+    │   ├── produk_recycle_bin.php
+    │   ├── profil.php
+    │   ├── reset_password.php
+    │   ├── reset_requests.php
+    │   ├── settings.php
+    │   ├── stock_logs.php
+    │   └── ulasan.php
+    ├── auth
+    │   ├── forgot_password.php
+    │   ├── login.php
+    │   ├── logout.php
+    │   ├── register.php
+    │   └── reset_password.php
+    ├── cart
+    │   ├── checkout.php
+    │   └── keranjang.php
+    ├── customer
+    │   ├── ajax_order_items.php
+    │   ├── api_counts.php
+    │   ├── detail_pesanan.php
+    │   ├── menunggu_ulasan.php
+    │   ├── pembayaran.php
+    │   ├── pesanan.php
+    │   ├── profil.php
+    │   ├── ulasan.php
+    │   └── ulasan_saya.php
+    ├── layouts
+    │   ├── footer.php
+    │   ├── header.php
+    │   └── navbar.php
+    └── shop
+        ├── beranda.php
+        ├── detail_produk.php
+        └── katalog_produk.php

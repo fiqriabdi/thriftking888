@@ -265,13 +265,19 @@ require_once APP_ROOT . '/Views/layouts/navbar.php';
                             <div class="col-md-7">
                                 <form action="" method="POST">
                                     <div class="mb-3">
-                                        <label class="form-label text-muted fw-bold" style="font-size: 13px;">Password Baru</label>
-                                        <input type="password" name="new_pass" class="form-control" required placeholder="Minimal 8 karakter">
+                                        <label for="new_pass" class="form-label text-muted fw-bold" style="font-size: 13px;">Password Baru</label>
+                                        <div class="input-group">
+                                            <input type="password" name="new_pass" id="new_pass" class="form-control" required placeholder="Minimal 8 karakter">
+                                            <span class="input-group-text" id="toggleNewPass" style="cursor: pointer;"><i class="bi bi-eye-slash"></i></span>
+                                        </div>
                                         <small class="text-muted" style="font-size: 11px;">Harus kombinasi huruf besar dan angka.</small>
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label text-muted fw-bold" style="font-size: 13px;">Ulangi Password Baru</label>
-                                        <input type="password" name="confirm_pass" class="form-control" required>
+                                        <label for="confirm_pass" class="form-label text-muted fw-bold" style="font-size: 13px;">Ulangi Password Baru</label>
+                                        <div class="input-group">
+                                            <input type="password" name="confirm_pass" id="confirm_pass" class="form-control" required>
+                                            <span class="input-group-text" id="toggleConfirmPass" style="cursor: pointer;"><i class="bi bi-eye-slash"></i></span>
+                                        </div>
                                     </div>
                                     <button type="submit" name="update_pass" class="btn btn-success fw-bold px-4 py-2">Simpan Password</button>
                                 </form>
@@ -507,6 +513,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // --- [BARU] Logika untuk toggle password di halaman profil ---
+    function setupPasswordToggle(inputId, toggleId) {
+        const passwordInput = document.getElementById(inputId);
+        const toggleIcon = document.getElementById(toggleId);
+
+        if (passwordInput && toggleIcon) {
+            toggleIcon.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                const icon = this.querySelector('i');
+                icon.classList.toggle('bi-eye');
+                icon.classList.toggle('bi-eye-slash');
+            });
+        }
+    }
+
+    setupPasswordToggle('new_pass', 'toggleNewPass');
+    setupPasswordToggle('confirm_pass', 'toggleConfirmPass');
 });
 </script>
 

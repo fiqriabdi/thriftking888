@@ -150,7 +150,7 @@ require_once APP_ROOT . '/Views/layouts/navbar.php';
                         <span class="text-muted text-capitalize small style-label" style="font-size: 10px; letter-spacing: 1px;"><?= htmlspecialchars($produk['nama_kategori'] ?? 'Katalog', ENT_QUOTES, 'UTF-8') ?></span>
                         <h5 class="fw-bold mb-1 text-capitalize m-0" style="font-size: 15px; letter-spacing: 0.5px;"><?= htmlspecialchars($produk['nama_produk'], ENT_QUOTES, 'UTF-8'); ?></h5>
                         <p class="text-danger fw-bold mb-2 small"><?= formatRupiah($produk['harga_jual']) ?></p> 
-                        <a href="<?= $base_url . 'produk/' . intval($produk['id']) ?>" class="btn btn-sm btn-dark px-3 py-1 text-capitalize" style="font-size: 10px;">Lihat Produk</a>
+                        <a href="<?= $base_url . 'detail/' . intval($produk['id']) ?>" class="btn btn-sm btn-dark px-3 py-1 text-capitalize" style="font-size: 10px;">Lihat Produk</a>
                     </div>
                 </div>
             </div>

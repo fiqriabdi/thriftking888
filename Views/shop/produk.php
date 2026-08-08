@@ -186,11 +186,11 @@ $base_url = defined('BASE_URL') ? BASE_URL : '';
             <h6 class="filter-title text-capitalize">Kategori</h6>
             <div class="list-group">
                 
-                <a href="<?= $base_url ?>katalog<?= $search ? '?search=' . urlencode($search) : '' ?>" 
+                <a href="<?= $base_url ?>produk<?= $search ? '?search=' . urlencode($search) : '' ?>" 
                    class="list-group-item text-capitalize <?= !$kategori_aktif ? 'active' : '' ?>">Semua Produk</a>
                 
                 <?php foreach ($all_categories as $cat): ?>
-                    <a href="<?= $base_url ?>katalog/<?= htmlspecialchars($cat['slug']) ?><?= $search ? '?search=' . urlencode($search) : '' ?>" 
+                    <a href="<?= $base_url ?>produk/<?= htmlspecialchars($cat['slug']) ?><?= $search ? '?search=' . urlencode($search) : '' ?>" 
                        class="list-group-item text-capitalize <?= $kategori_aktif == $cat['slug'] ? 'active' : '' ?>"><?= htmlspecialchars($cat['nama_kategori']) ?></a>
                 <?php endforeach; ?>
             </div>
@@ -216,7 +216,7 @@ $base_url = defined('BASE_URL') ? BASE_URL : '';
                     <div class="col-12 text-center py-5">
                         <i class="bi bi-search display-3 text-muted opacity-50"></i>
                         <h5 class="text-muted mt-3 text-capitalize small tracking-wider" style="letter-spacing: 1px;">Maaf, produk tidak ditemukan.</h5>                        
-                        <a href="<?= $base_url ?>katalog" class="btn btn-dark mt-3 rounded-0 px-4 text-capitalize small" style="font-size: 0.7rem; letter-spacing: 1px;">Reset Filter</a>
+                        <a href="<?= $base_url ?>produk" class="btn btn-dark mt-3 rounded-0 px-4 text-capitalize small" style="font-size: 0.7rem; letter-spacing: 1px;">Reset Filter</a>
                     </div>
                 <?php endif; ?>
             </div>

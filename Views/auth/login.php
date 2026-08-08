@@ -63,8 +63,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="email" name="email" class="form-control rounded-0 <?= $error ? 'is-invalid' : '' ?>" value="<?= htmlspecialchars($old_email, ENT_QUOTES, 'UTF-8') ?>" required autofocus>
                 </div>
                 <div class="mb-3">
-                    <label class="small text-capitalize  fw-bold">Password</label>
-                    <input type="password" name="password" class="form-control rounded-0 <?= $error ? 'is-invalid' : '' ?>" required>
+                    <label for="password" class="small text-capitalize  fw-bold">Password</label>
+                    <div class="input-group">
+                        <input type="password" name="password" id="password" class="form-control rounded-0 <?= $error ? 'is-invalid' : '' ?>" required>
+                        <span class="input-group-text rounded-0" id="togglePassword" style="cursor: pointer;">
+                            <i class="bi bi-eye-slash"></i>
+                        </span>
+                    </div>
                     <div class="text-end mt-1">
                         <a href="<?= BASE_URL ?>auth/forgot-password" class="text-muted small text-decoration-none">Lupa Password?</a>
                     </div>
@@ -77,4 +82,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+    if (togglePassword && password) {
+        togglePassword.addEventListener('click', function () {
+            // alihkan tipe atribut
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // alihkan ikon mata
+            this.querySelector('i').classList.toggle('bi-eye');
+            this.querySelector('i').classList.toggle('bi-eye-slash');
+        });
+    }
+});
+</script>
 <?php require_once APP_ROOT . '/Views/layouts/footer.php'; ?>

@@ -22,10 +22,10 @@
                 <ul class="list-unstyled small">
                     <?php if (!empty($global_categories)): ?>
                         <?php foreach($global_categories as $cat): ?>
-                            <li class="mb-2"><a href="<?= $base_url ?>katalog/<?= htmlspecialchars($cat['slug']) ?>" class="text-decoration-none text-muted"><?= htmlspecialchars($cat['nama_kategori']) ?></a></li>
+                            <li class="mb-2"><a href="<?= $base_url ?>produk/<?= htmlspecialchars($cat['slug']) ?>" class="text-decoration-none text-muted"><?= htmlspecialchars($cat['nama_kategori']) ?></a></li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <li class="mb-2"><a href="<?= $base_url ?>katalog" class="text-decoration-none text-muted">Katalog</a></li>
+                        <li class="mb-2"><a href="<?= $base_url ?>produk" class="text-decoration-none text-muted">Produk</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

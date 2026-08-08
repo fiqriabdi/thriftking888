@@ -33,12 +33,12 @@ Router::get('', 'shop/beranda.php'); // Rute default untuk root
 Router::get('index.php', 'shop/beranda.php'); // Rute untuk index.php (jika diakses langsung)
 
 // Rute Toko (Shop)
-Router::get('katalog', 'shop/katalog_produk.php');
-Router::get('katalog.php', 'shop/katalog_produk.php'); // Tambahkan rute ini untuk menangani akses langsung ke katalog.php
-Router::get('katalog/:kategori', 'shop/katalog_produk.php'); // Contoh rute dengan parameter kategori
+Router::get('produk', 'shop/produk.php');
+Router::get('produk.php', 'shop/produk.php'); // Menyesuaikan dengan nama baru
+Router::get('produk/:kategori', 'shop/produk.php'); // Menyesuaikan dengan nama baru
 
 // Contoh rute dinamis dengan parameter :id
-Router::get('produk/:id', 'shop/detail_produk.php'); // Rute baru untuk detail produk
+Router::get('detail/:id', 'shop/detail_produk.php'); // Rute baru untuk detail produk
 Router::get('detail.php', 'shop/detail_produk.php'); // Tetap support rute lama untuk sementara
 
 // Rute Otentikasi

@@ -67,12 +67,12 @@ class ProdukController {
                         <?php if ($p['stok'] > 0 && $p['stok'] < 3) : ?>
                             <div class="position-absolute top-0 end-0 bg-warning text-dark small fw-bold px-2 py-1 m-2" style="font-size: 9px; letter-spacing: 1px; z-index: 3;">LIMITED</div>
                         <?php endif; ?>
-                        <a href="<?= BASE_URL ?>produk/<?= $produk_id ?>">
+                        <a href="<?= BASE_URL ?>detail/<?= $produk_id ?>">
                             <img src="<?= !empty($produk_gambar) ? BASE_URL . 'assets/img/products/' . $produk_gambar : BASE_URL . 'assets/img/no-image.png' ?>" 
                                  alt="<?= $produk_nama ?>"
                                  onerror="this.onerror=null;this.src='<?= BASE_URL ?>assets/img/no-image.png';">
                         </a> 
-                        <a href="<?= BASE_URL ?>produk/<?= $produk_id ?>" class="btn-overlay text-capitalize">Lihat Detail</a>
+                        <a href="<?= BASE_URL ?>detail/<?= $produk_id ?>" class="btn-overlay text-capitalize">Lihat Detail</a>
                     </div>
                     <div class="card-body text-center px-0 pb-0">
                         <span class="text-muted text-capitalize" style="font-size: 10px; letter-spacing: 1px;">

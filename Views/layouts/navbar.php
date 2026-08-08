@@ -192,15 +192,15 @@ $current_category = htmlspecialchars($_GET['kategori'] ?? ($kategori ?? ''), ENT
             </a>
 
             <div class="d-none d-sm-flex align-items-center gap-3">
-                <a class="nav-link-item text-uppercase" href="<?= $base_url ?>katalog/thrifting">Thrifting</a>
+                <a class="nav-link-item text-uppercase" href="<?= $base_url ?>produk/thrifting">Thrifting</a>
 
-                <!--<a class="nav-link-item text-uppercase" href="<?= $base_url ?>katalog/vintage">Vintage</a>-->
+                <!--<a class="nav-link-item text-uppercase" href="<?= $base_url ?>produk/vintage">Vintage</a>-->
 
             </div>
         </div>
 
         <div class="search-wrapper flex-grow-1 mx-lg-3 order-3 order-lg-2 w-100 w-lg-auto">
-            <form action="<?= $base_url ?>katalog" method="get">
+            <form action="<?= $base_url ?>produk" method="get">
                 <input type="hidden" name="kategori" value="<?= $current_category ?>">
                 <div class="search-group">
                     <input type="text" name="search" value="<?= $search_query ?>"
@@ -250,7 +250,7 @@ $current_category = htmlspecialchars($_GET['kategori'] ?? ($kategori ?? ''), ENT
                             $wa_link = "https://wa.me/{$formatted_wa}?text={$wa_message}";
                         ?>
                         <a href="<?= $wa_link ?>" class="notif-item" target="_blank" title="Chat via WhatsApp">
-                            <div class="me-2 text-success"><i class="bi bi-chat-left-text fs-5"></i></div>
+                            <div class="me-2 text-success"><i class=""></i></div>
                             <div><div class="small fw-bold">Chat</div><div class="text-muted small" style="font-size:0.7rem">Tanya admin tentang produk.</div></div>
                         </a>
                         <?php else: ?>
@@ -260,11 +260,11 @@ $current_category = htmlspecialchars($_GET['kategori'] ?? ($kategori ?? ''), ENT
                         </a>-->
                         <?php endif; ?>
                         <a href="<?= $base_url ?>pelanggan/menunggu-ulasan" class="notif-item">
-                            <div class="me-2 text-warning"><i class="bi bi-star-fill fs-5"></i></div>
+                            <div class="me-2 text-warning"><i class=""></i></div>
                             <div><div class="small fw-bold">Menunggu Diulas</div><div class="text-muted small" style="font-size:0.7rem">Ada <?= $inbox_total ?> produk menunggu ulasanmu.</div></div>
                         </a>
                         <a href="<?= $base_url ?>pelanggan/ulasan-saya" class="notif-item">
-                            <div class="me-2 text-info"><i class="bi bi-journal-text fs-5"></i></div>
+                            <div class="me-2 text-info"><i class=""></i></div>
                             <div><div class="small fw-bold">Ulasan Saya</div><div class="text-muted small" style="font-size:0.7rem">Lihat riwayat ulasan yang Anda berikan.</div></div>
                         </a>
                     </div>
@@ -281,7 +281,7 @@ $current_category = htmlspecialchars($_GET['kategori'] ?? ($kategori ?? ''), ENT
                         <div class="notif-header">Notifikasi (<?= intval($notif_count) ?>)</div>
                         <?php if ($notif_count > 0): ?>
                             <a href="<?= $base_url ?>pelanggan/pesanan" class="notif-item">
-                                <div class="me-2 text-primary"><i class="bi bi-box-seam fs-5"></i></div>
+                                <div class="me-2 text-primary"><i class="bi bi-box-seam fs-"></i></div>
                                 <div><div class="small fw-bold">Pesanan Aktif</div><div class="text-muted small" style="font-size:0.7rem">Ada pesanan berjalan.</div></div>
                             </a>
                         <?php else: ?>
@@ -314,7 +314,7 @@ $current_category = htmlspecialchars($_GET['kategori'] ?? ($kategori ?? ''), ENT
                                     ? BASE_URL . 'assets/img/products/' . htmlspecialchars($item['gambar_utama'], ENT_QUOTES, 'UTF-8')
                                     : BASE_URL . 'assets/img/no-image.png';
                             ?>
-                                <a href="<?= BASE_URL ?>produk/<?= htmlspecialchars($item['product_id'], ENT_QUOTES, 'UTF-8') ?>" class="notif-item cart-item">
+                                <a href="<?= BASE_URL ?>detail/<?= htmlspecialchars($item['product_id'], ENT_QUOTES, 'UTF-8') ?>" class="notif-item cart-item">
                                     <img src="<?= $img_src ?>" alt="<?= htmlspecialchars($item['nama_produk'], ENT_QUOTES, 'UTF-8') ?>" 
                                          class="me-2 rounded" style="width: 40px; height: 40px; object-fit: cover;">
                                     <div class="flex-grow-1">
@@ -332,13 +332,17 @@ $current_category = htmlspecialchars($_GET['kategori'] ?? ($kategori ?? ''), ENT
                                     <div><div class="small fw-bold">Lihat Semua (<?= $cart_item_count ?>)</div><div class="text-muted small" style="font-size:0.7rem">Lihat atau Checkout sekarang.</div></div>
                                 </a>
                             <?php else: ?>
+                                <!-- Tombol Lihat Keranjang Lengkap (tanpa ikon) -->
                                 <a href="<?= $base_url ?>pelanggan/keranjang" class="notif-item border-top">
-                                    <div class="me-2 text-primary"><i class=""></i></div>
                                     <div><div class="small fw-bold">Lihat Keranjang Lengkap</div><div class="text-muted small" style="font-size:0.7rem">Lihat atau Checkout sekarang.</div></div>
                                 </a>
                             <?php endif; ?>
                         <?php else: ?>
-                            <div class="p-3 text-center text-muted small">Keranjang belanja kosong.</div>
+                            <div class="p-3 text-align text-muted small">Keranjang belanja kosong.</div>
+                            <!-- Tombol Buka Halaman Keranjang (tanpa ikon) -->
+                            <a href="<?= $base_url ?>pelanggan/keranjang" class="notif-item border-top">
+                                <div><div class="small fw-bold">Lihat Keranjang</div><div class="text-muted small" style="font-size:0.7rem">Lihat halaman keranjang Anda.</div></div>
+                            </a>
                         <?php endif; ?>
                     </div>
                 </div>
