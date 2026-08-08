@@ -4,7 +4,7 @@ DirectoryIndex public/index.php index.php
 RewriteEngine On
 
 # 2. TENTUKAN BASE FOLDER (Kunci utama agar subfolder XAMPP tidak Index Of)
-RewriteBase /thriftking888/
+RewriteBase 
 
 # 3. Blokir akses langsung ke folder internal di luar public/ demi keamanan
 RewriteRule ^(Config|Controllers|Models|Middleware|routes|Views|helpers|database)(/.*)?$ - [F,L,NC]
@@ -27,5 +27,5 @@ RewriteRule ^ - [L]
 # KECUALI untuk folder assets dan storage agar tidak masuk ke router PHP jika file tidak ditemukan
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/thriftking888/(assets|storage)/ [NC]
+RewriteCond %{REQUEST_URI} !^/(assets|storage)/ [NC]
 RewriteRule ^(.*)$ public/index.php [L,QSA]
