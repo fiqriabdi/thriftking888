@@ -20,10 +20,12 @@ require_once __DIR__ . '/../Controllers/Auth/AuthController.php';
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 // 2. POTONG BASE URL SUBFOLDER SECARA DINAMIS & AMAN
-$baseFolder = '/thriftking888';
-
-// Gunakan regex untuk membersihkan prefix folder agar lebih robust
-$uri = preg_replace('#^' . preg_quote($baseFolder) . '(/public)?#', '', $uri);
+// Cek apakah aplikasi berjalan di subfolder (development) atau root (production)
+$baseFolder = str_replace('/public', '', dirname($_SERVER['SCRIPT_NAME']));
+if ($baseFolder !== '/' && $baseFolder !== '\\') {
+    // Aplikasi berjalan di subfolder, bersihkan dari URI
+    $uri = preg_replace('#^' . preg_quote($baseFolder) . '#', '', $uri);
+}
 
 // 3. Bersihkan slash di awal dan akhir string
 $uri = trim($uri, '/');
